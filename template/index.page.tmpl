@@ -1,0 +1,13 @@
+{{ template "base" .}}
+
+{{ define "content" }} 
+    {{range .Photo}}
+        <a class="image-container" href="/">
+            <div class="img">
+                <img class="image" src="{{.Image}}" alt="Image">
+                <span>{{.Name}}</span>
+            </div>
+        </a>
+        <!-- <figcaption>{{.Name}}</figcaption> -->
+    {{end}}
+{{ end }}
