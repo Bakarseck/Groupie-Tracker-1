@@ -8,19 +8,11 @@ import (
 	"net/http"
 )
 
-var Images PageData
+var Artists PageData
+var DonneRestant LOcDatRel
 
 func Recuperation(str string) {
-	JsonFile, err := http.Get(str)
-	if err != nil {
-		panic(err)
-	}
-	defer JsonFile.Body.Close()
-	if JsonFile.StatusCode != http.StatusOK {
-		fmt.Println("La requête a retourné un code de statut non 200 OK:", JsonFile.Status)
-		return
-	}
-	lire, err := io.ReadAll(JsonFile.Body)
+	lire, err := MiniRecup(str)
 	if err != nil {
 		panic(err)
 	}
@@ -29,21 +21,63 @@ func Recuperation(str string) {
 	if err != nil {
 		panic(err)
 	}
-	JsonFile1, err := http.Get(Link.Artists)
+	lir, err := MiniRecup(Link.Artists)
 	if err != nil {
 		panic(err)
 	}
-	defer JsonFile1.Body.Close()
-	if JsonFile1.StatusCode != http.StatusOK {
-		fmt.Println("La requête a retourné un code de statut non 200 OK:", JsonFile1.Status)
-		return
-	}
-	lir, err := io.ReadAll(JsonFile1.Body)
-	if err != nil {
-		panic(err)
-	}
-	err = json.Unmarshal(lir, &Images.Photo)
+	err = json.Unmarshal(lir, &Artists.Artist)
 	if err != nil {
 		log.Fatal(err)
 	}
+	Location, err := MiniRecup(Link.Locations)
+	if err != nil {
+		panic(err)
+	}
+	var loc = make(map[string][]Locations)
+	err = json.Unmarshal(Location, &loc)
+	if err != nil {
+		log.Fatal(err)
+	}
+	DonneRestant.Location = loc
+	Date, err := MiniRecup(Link.Dates)
+	if err != nil {
+		panic(err)
+	}
+	var date = make(map[string][]Dates)
+	err = json.Unmarshal(Date, &date)
+	if err != nil {
+		log.Fatal(err)
+	}
+	DonneRestant.Date = date
+	Relatio, err := MiniRecup(Link.Relation)
+	if err != nil {
+		panic(err)
+	}
+	var rel = make(map[string][]Relations)
+	err = json.Unmarshal(Relatio, &rel)
+	if err != nil {
+		log.Fatal(err)
+	}
+	DonneRestant.Relation = rel
+	Glob.Artist = Artists
+	Glob.DonneRestant = DonneRestant
+}
+
+
+
+func MiniRecup(str string) ([]byte, error) {
+	jfile, erreur := http.Get(str)
+	if erreur != nil {
+		panic(erreur)
+	}
+	defer jfile.Body.Close()
+	if jfile.StatusCode != http.StatusOK {
+		fmt.Println("La requête a retourné un code de statut non 200 OK:", jfile.Status)
+		return nil, erreur
+	}
+	lire, erreur := io.ReadAll(jfile.Body)
+	if erreur != nil {
+		panic(erreur)
+	}
+	return lire, nil
 }

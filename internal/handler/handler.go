@@ -3,17 +3,33 @@ package handler
 import (
 	"Tracker/internal/app"
 	"bytes"
+	"log"
 	"net/http"
 	"path/filepath"
+	"strconv"
 	"text/template"
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	RenderHandler(w, "home", app.Images)
+	RenderHandler(w, "home", app.Artists)
 }
 func Infohandler(w http.ResponseWriter, r *http.Request) {
+	ID := r.URL.Query().Get("id")
+	id, err := strconv.Atoi(ID)
+	if id < 0 || id > 53 {
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
+	app.Search(id, app.Artists, app.DonneRestant)
+	RenderHandler(w, "info", app.Inf)
+}
 
-	RenderHandler(w, "info", nil)
+func SearchHandler(w http.ResponseWriter, r *http.Request){
+	
+
 }
 
 func RenderHandler(w http.ResponseWriter, tmplname string, Value interface{}) {

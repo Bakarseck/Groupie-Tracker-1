@@ -7,6 +7,8 @@ import (
 	"net/http"
 )
 
+
+
 func main() {
 	app.Recuperation("https://groupietrackers.herokuapp.com/api")
 	http.Handle("/asset/", http.StripPrefix("/asset/", http.FileServer(http.Dir("asset"))))

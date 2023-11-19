@@ -2,8 +2,8 @@
 
 {{ define "content" }} 
 <div id="container">
-    {{range .Photo}}
-    <a href="/info">
+    {{range .Artist}}
+    <a href="/info?id={{.ID}}">
         <div class="link">
             <img class="image" src="{{.Image}}" alt="Image">
             <span id="name" >{{.Name}}</span> 
