@@ -1,27 +1,102 @@
 *{
-    margin: 0;
     box-sizing: border-box;
 }
 
-.image-container {
-    width: 100px;
-    height: 100px;
-    border: 1px solid #ccc;
-    margin: 5px;
-    float: left;
-    overflow: hidden;
+@font-face {
+    font-family: 'Saturday';
+    src: url('/asset/font/Saturday.ttf') format('truetype');
+    /* Ajoutez d'autres déclarations de format pour les autres formats de police si nécessaire */
+    font-weight: normal;
+    font-style: normal;
 }
 
-.container{
+/* Ajoutez du style à la flèche ici si nécessaire */
+.arrow {
+position: fixed;
+bottom: 20px;
+right: 20px;
+cursor: pointer;
+font-size: 36px;
+display: none;
+transition: opacity 0.3s ease-in-out;
+}
+
+/* Ajoutez du style pour l'animation de la flèche ici si nécessaire */
+.arrow.active {
+    animation: floatUpDown 2s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+header{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+header h1 {
+    font-family: 'Saturday', sans-serif;
+    font-size: 50px;
+    font-weight: normal;
+    font-style: normal;
 }
 
-a {
-    max-width: 25%;
+#container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5px;
 }
 
-a div.img {
+/* Style pour le conteneur d'image */
+.link  {
+    width: 150px;
+    margin: 0 10px;
+    text-align: center;
+}
+
+
+/* Style pour le lien/image */
+.image-container a {
+    width: 150px !important;
+    text-decoration: none;
+    text-align: center;
+    color: inherit;
+    display: block; /* Fait du lien un bloc pour couvrir l'image et le nom */
+}
+
+
+
+/* Style pour l'image elle-même */
+.image {
     display: block;
-    max-width: 25%;
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    width: 100%; /* Assure que l'image prend toute la largeur du conteneur */
+    transition: scale 0.3s ease-in-out;
+}
+.image:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Ombre légère */
+    transform: scale(1.2) ;
+}
+
+/* Style pour la balise span contenant le nom */
+#name {
+    display: block; /* Assure que le nom apparaît sous l'image */
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold; /* Met en gras le nom */
 }
 

@@ -8,12 +8,12 @@ import (
 	"text/template"
 )
 
-func NewHandler(w http.ResponseWriter, r *http.Request) {
-	RenderHandler(w, "index", app.Images)
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	RenderHandler(w, "home", app.Images)
 }
-func Homehandler(w http.ResponseWriter, r *http.Request) {
+func Infohandler(w http.ResponseWriter, r *http.Request) {
 
-	RenderHandler(w, "home", nil)
+	RenderHandler(w, "info", nil)
 }
 
 func RenderHandler(w http.ResponseWriter, tmplname string, Value interface{}) {

@@ -9,8 +9,13 @@ import (
 
 func main() {
 	app.Recuperation("https://groupietrackers.herokuapp.com/api")
-	http.HandleFunc("/index", bim.NewHandler)
-	http.HandleFunc("/", bim.Homehandler)
-	fmt.Println("https://localhost:8080")
-	http.ListenAndServe(":1111", nil)
+	http.Handle("/asset/", http.StripPrefix("/asset/", http.FileServer(http.Dir("asset"))))
+	http.HandleFunc("/", bim.HomeHandler)
+	http.HandleFunc("/info", bim.Infohandler)
+	fmt.Printf("127.0.0.1:1111")
+	err := http.ListenAndServe(":1111", nil)
+	if err != nil {
+		fmt.Println("Erreur lors du démarrage du serveur :", err)
+		return
+	}
 }
