@@ -1,6 +1,8 @@
 package app
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var Inf Info
 var Glob Global
@@ -14,8 +16,4 @@ func Search(id int, artists PageData, restant LOcDatRel) {
 	} else {
 		fmt.Printf("Donnes recuperer not valable")
 	}
-}
-
-func Search01(){
-
 }

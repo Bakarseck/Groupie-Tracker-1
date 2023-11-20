@@ -27,11 +27,6 @@ func Infohandler(w http.ResponseWriter, r *http.Request) {
 	RenderHandler(w, "info", app.Inf)
 }
 
-func SearchHandler(w http.ResponseWriter, r *http.Request){
-	
-
-}
-
 func RenderHandler(w http.ResponseWriter, tmplname string, Value interface{}) {
 	templatecache, err := TemplateCacheHandler()
 	if err != nil {
