@@ -16,6 +16,9 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 func Infohandler(w http.ResponseWriter, r *http.Request) {
 	ID := r.URL.Query().Get("id")
 	id, err := strconv.Atoi(ID)
+	if err!= nil {
+        log.Println(err)
+    }
 	if id < 0 || id > 53 {
 		w.WriteHeader(http.StatusNotFound)
 		return
