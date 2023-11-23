@@ -37,6 +37,11 @@
     transition: opacity 0.3s ease-in-out;
 }
 
+.search-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* Ajoutez du style pour l'animation de la flèche ici si nécessaire */
 .arrow.active {
     animation: floatUpDown 2s ease-in-out infinite;

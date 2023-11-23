@@ -34,7 +34,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	var information app.Listeinfo
 	text := r.FormValue("browser")
 	resultat, count := app.SearchBar(text, app.AllArtists)
-	if count == 0 {
+	if count == 0 || text == "" {
 		tmpl := template.Must(template.New("search").Parse(`<html lang="en">
 		<head>
 			<meta charset="UTF-8">

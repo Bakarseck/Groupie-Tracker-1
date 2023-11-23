@@ -1,12 +1,15 @@
 {{ template "base" .}}
 
 {{ define "content" }}
-{{range .Artists}}
-<a href="/info?id={{.ID}}">
-    <div class="link">
-        <img class="image" src="{{.Image}}" alt="Image">
-        <span id="name">{{.Name}}</span>
-    </div>
-</a>
-{{end}}
+<a href="/"><i class="fa fa-car" style="font-size:60px;color:red;"></i>Come back home page !!</a>
+<div class="search-container">
+    {{range .Artists}}
+    <a href="/info?id={{.ID}}">
+        <div class="link">
+            <img class="image" src="{{.Image}}" alt="Image">
+            <span id="name">{{.Name}}</span>
+        </div>
+    </a>
+    {{end}}
+</div>
 {{ end }}
