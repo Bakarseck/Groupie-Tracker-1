@@ -1,14 +1,54 @@
 {{ template "base" .}}
 
-{{ define "content" }} 
+{{ define "content" }}
 <div id="container">
-    {{range .Artist}}
+    <div class="search">
+        <form id="search-form" action="/search" method="POST">
+            <input list="browsers" name="browser" id="browser" placeholder="Rechercher...">
+            <datalist id="browsers">
+                {{range .Artist.Artist}}
+                <option value="{{.Name}}" >
+                <option value="{{.Members}}">
+                <option value="{{.FirstAlbum}}">
+                <option value="{{.CreationDate}}">
+                    {{end}}
+                    {{range $index, $value :=
+                    .DonneRestant.Location}}
+                    {{range $value}}
+                    {{range .Location}}
+                <option value="{{.}}">
+                    {{end}}
+                    {{end}}
+                    {{end}}
+                    {{range $index, $value :=
+                    .DonneRestant.Date}} 
+                    {{range $value}}
+                    {{range .Dates}}
+                <option value="{{.}}">
+                    {{end}}
+                    {{end}}
+                    {{end}}
+                    {{range $index, $value :=
+                    .DonneRestant.Relation}}
+                    {{range $value}}
+                    {{range $index1, $value1 := .Relations}}
+                    {{range $value1}}
+                <option value="{{$index1}}: {{.}}">
+                    {{end}}
+                    {{end}}
+                    {{end}}
+                    {{end}}
+            </datalist>
+            <button type="submit" id="search-button">Rechercher</button>
+        </form>
+    </div>
+    {{range .Artist.Artist}}
     <a href="/info?id={{.ID}}">
         <div class="link">
             <img class="image" src="{{.Image}}" alt="Image">
-            <span id="name" >{{.Name}}</span> 
+            <span id="name">{{.Name}}</span>
         </div>
     </a>
-       {{end}}
+    {{end}}
 </div>
 {{ end }}

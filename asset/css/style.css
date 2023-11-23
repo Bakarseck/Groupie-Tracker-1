@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -10,15 +10,31 @@
     font-style: normal;
 }
 
+#image {
+    animation: rotate 2s linear infinite;
+    /* Rotation pendant 2 secondes, en boucle */
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 /* Ajoutez du style à la flèche ici si nécessaire */
 .arrow {
-position: fixed;
-bottom: 20px;
-right: 20px;
-cursor: pointer;
-font-size: 36px;
-display: none;
-transition: opacity 0.3s ease-in-out;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 36px;
+    display: none;
+    transition: opacity 0.3s ease-in-out;
 }
 
 /* Ajoutez du style pour l'animation de la flèche ici si nécessaire */
@@ -27,15 +43,18 @@ transition: opacity 0.3s ease-in-out;
 }
 
 @keyframes floatUpDown {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
 }
 
-header{
+header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,34 +62,38 @@ header{
     height: 100vh;
     text-align: center;
 }
+
 header h1 {
     font-family: 'Saturday', sans-serif;
     font-size: 50px;
     font-weight: normal;
     font-style: normal;
 }
-boite span, h3,h1{
+
+boite span,
+h3,
+h1 {
     font-family: 'Saturday', sans-serif;
     font-size: 20px;
     font-weight: normal;
     font-style: normal;
 }
 
-p{
+p {
     font-family: 'Saturday', sans-serif;
     font-size: 20px;
     font-weight: normal;
     font-style: normal;
 }
 
-#container{
+#container {
     display: flex;
     flex-wrap: wrap;
     margin-left: 5px;
 }
 
 /* Style pour le conteneur d'image */
-.link  {
+.link {
     width: 150px;
     margin: 0 10px;
     text-align: center;
@@ -83,7 +106,8 @@ p{
     text-decoration: none;
     text-align: center;
     color: inherit;
-    display: block; /* Fait du lien un bloc pour couvrir l'image et le nom */
+    display: block;
+    /* Fait du lien un bloc pour couvrir l'image et le nom */
 }
 
 
@@ -91,41 +115,49 @@ p{
 /* Style pour l'image elle-même */
 .image {
     display: block;
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    width: 100%; /* Assure que l'image prend toute la largeur du conteneur */
+    border-radius: 8px;
+    /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ombre légère */
+    width: 100%;
+    /* Assure que l'image prend toute la largeur du conteneur */
     transition: scale 0.3s ease-in-out;
 }
-.image:hover{
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Ombre légère */
+
+.image:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    /* Ombre légère */
     transition: ease-in-out 0.4s;
-    transform: scale(1.2) ;
+    transform: scale(1.2);
 }
 
 /* Style pour la balise span contenant le nom */
 #name {
-    display: block; /* Assure que le nom apparaît sous l'image */
+    display: block;
+    /* Assure que le nom apparaît sous l'image */
     text-decoration: none;
     width: 100%;
     text-align: center;
     padding: 0;
     font-size: 14px;
     color: #ffffff;
-    font-weight: bold; /* Met en gras le nom */
+    font-weight: bold;
+    /* Met en gras le nom */
 }
 
-.boite{
+.boite {
     display: inline-block;
 }
-.containere{
+
+.containere {
     display: flex;
     flex-direction: wrap;
 }
-.concertdates{
-    padding: 0 12px;
-}
-.location{
+
+.concertdates {
     padding: 0 12px;
 }
 
-
+.location {
+    padding: 0 12px;
+}

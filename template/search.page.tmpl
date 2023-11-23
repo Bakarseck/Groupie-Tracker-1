@@ -1,6 +1,12 @@
 {{ template "base" .}}
 
-{{ define "content" }} 
-
-
+{{ define "content" }}
+{{range .Artists}}
+<a href="/info?id={{.ID}}">
+    <div class="link">
+        <img class="image" src="{{.Image}}" alt="Image">
+        <span id="name">{{.Name}}</span>
+    </div>
+</a>
+{{end}}
 {{ end }}

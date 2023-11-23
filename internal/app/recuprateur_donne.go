@@ -10,6 +10,7 @@ import (
 
 var Artists PageData
 var DonneRestant LOcDatRel
+var AllArtists []ArtistInfo
 
 func Recuperation(str string) {
 	lire, err := MiniRecup(str)
@@ -61,6 +62,7 @@ func Recuperation(str string) {
 	DonneRestant.Relation = rel
 	Glob.Artist = Artists
 	Glob.DonneRestant = DonneRestant
+	AllArtists = Remplissage(Glob)
 }
 
 

@@ -7,8 +7,17 @@ type Value struct {
 	Relation  string `json:"relation"`
 }
 
+type Global struct {
+	Artist       PageData
+	DonneRestant LOcDatRel
+}
 type PageData struct {
 	Artist []Artist
+}
+type LOcDatRel struct {
+	Location map[string][]Locations
+	Date     map[string][]Dates
+	Relation map[string][]Relations
 }
 
 type Artist struct {
@@ -19,16 +28,7 @@ type Artist struct {
 	CreationDate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
 }
-type LOcDatRel struct {
-	Location map[string][]Locations
-	Date     map[string][]Dates
-	Relation map[string][]Relations
-}
 
-type Global struct {
-	Artist       PageData
-	DonneRestant LOcDatRel
-}
 type Locations struct {
 	Id       int      `json:"id"`
 	Location []string `json:"locations"`
@@ -48,4 +48,20 @@ type Info struct {
 	Date     Dates
 	Location Locations
 	Relation Relations
+}
+
+type ArtistInfo struct {
+	ID           int      
+	Image        string   
+	Name         string  
+	Members      []string
+	CreationDate int     
+	FirstAlbum   string   
+	Location []string 
+	Dates []string
+	Relations map[string][]string
+}
+
+type Listeinfo struct{
+	Artists   []ArtistInfo
 }
