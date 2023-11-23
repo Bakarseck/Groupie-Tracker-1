@@ -11,6 +11,7 @@ import (
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	app.Geolocalisation("saitama-japan")
 	RenderHandler(w, "home", app.Glob)
 }
 func Infohandler(w http.ResponseWriter, r *http.Request) {
@@ -65,6 +66,10 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	RenderHandler(w, "search", information)
 	}
 }
+
+// func MapsHandler(w http.ResponseWriter, r *http.Request) {
+// 	RenderHandler(w, "maps", app.Maps)
+// }
 
 func RenderHandler(w http.ResponseWriter, tmplname string, Value interface{}) {
 	templatecache, err := TemplateCacheHandler()
