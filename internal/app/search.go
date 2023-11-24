@@ -15,6 +15,8 @@ func Search(id int, artists PageData, restant LOcDatRel) {
 		Inf.Location = restant.Location["index"][id-1]
 		Inf.Date = restant.Date["index"][id-1]
 		Inf.Relation = restant.Relation["index"][id-1]
+		Inf.Coordoones = []LatLng{}
+		Geolocalisation(restant.Location["index"][id-1].Location)
 	} else {
 		fmt.Printf("Donnes recuperer not valable")
 	}

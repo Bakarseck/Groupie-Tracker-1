@@ -43,10 +43,16 @@ type Dates struct {
 	Dates []string `json:"dates"`
 }
 
+type LatLng struct { 
+	Lat string 
+	Lng string
+}
+
 type Info struct {
 	Artist   Artist
 	Date     Dates
 	Location Locations
+	Coordoones []LatLng
 	Relation Relations
 }
 
@@ -64,6 +70,13 @@ type ArtistInfo struct {
 
 type Listeinfo struct{
 	Artists   []ArtistInfo
+}
+
+
+type Error struct{
+	ErrorMsg string
+	Code int
+	Image string
 }
 
 type Localisation  struct {

@@ -13,6 +13,8 @@ func main() {
 	http.HandleFunc("/", bim.HomeHandler)
 	http.HandleFunc("/info", bim.Infohandler)
 	http.HandleFunc("/search", bim.SearchHandler)
+	http.HandleFunc("/api", bim.ApiJson)
+	http.HandleFunc("/Error", bim.ErrorHandler)
 	fmt.Printf("127.0.0.1:1112")
 	err := http.ListenAndServe(":1112", nil)
 	if err != nil {

@@ -59,6 +59,11 @@
     }
 }
 
+#map {
+    height:fit-content;
+    width:fit-content;
+}
+
 header {
     display: flex;
     flex-direction: column;

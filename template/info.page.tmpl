@@ -1,6 +1,7 @@
 {{ template "base" .}}
 
 {{ define "content" }}
+<button><i class="bi bi-geo-alt"></i> Maps</button>
 <dive class="boite">
     <div class="container">
         <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
@@ -42,7 +43,12 @@
             </optgroup>
         {{ end }}
     </select>
+
+    <div id="map">
+   
+    </div>
 </div>
 
 </div>
+
 {{ end }}
