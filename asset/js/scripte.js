@@ -20,23 +20,73 @@ $(document).ready(function () {
 
 
 // Appeler la fonction d'initialisation de la carte lorsque la page est chargée
+function convertDMSToDD(degrees, minutes, seconds, direction) {
+    let dd = parseFloat(degrees) + parseFloat(minutes) / 60 + parseFloat(seconds) / (60 * 60);
+    return direction === 'S' || direction === 'W' ? dd * -1 : dd;
+}
 
 function Mapping() {
-    let mesDonnees;  // Déclarer la variable à l'extérieur de la chaîne de promesses 
+    let mesDonnees;
     fetch("api")
-        .then(response => response.json())  // Convertir la réponse en JSON
-        .then(data => {
-            mesDonnees = data;  // Assigner les données à la variable
-            console.log("Données récupérées:", mesDonnees);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
         })
-        .catch(error => console.error("Erreur lors de la récupération des données :", error));
-    document.getElementById("map").innerHTML = `<iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-22.510986328125%2C9.459898921269597%2C-11.195068359375002%2C18.44834670293207&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/13.998/-16.853">View Larger Map</a></small>`;
+        .then(data => {
+            mesDonnees = data;
+            console.log("Données récupérées:", mesDonnees);
 
-  
+            // Create and initialize Leaflet map object
+            var map = L.map('map').setView([0, 0], 2); // Adjust the initial view as needed
+
+            // Load map tiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                attribution: 'Data <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, '
+                + 'Map tiles &copy; <a href="https://carto.com/attribution">CARTO</a>'
+            }).addTo(map);
+
+            // Custom icon for the markers
+            var customIcon = L.icon({
+                iconUrl: 'asset/img/point.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+                popupAnchor: [0, -32]
+            });
+
+            // Iterate through coordinates and add markers with custom icon
+            mesDonnees.forEach(coordinate => {
+                // Extract degrees, minutes, seconds, and direction from the string
+                const latParts = coordinate.Lat.match(/[0-9.]+|[A-Z]+/g);
+                const lngParts = coordinate.Lng.match(/[0-9.]+|[A-Z]+/g);
+
+                // Convert degrees, minutes, seconds to decimal degrees
+                const lat = convertDMSToDD(latParts[0], latParts[1], latParts[2], latParts[3]);
+                const lng = convertDMSToDD(lngParts[0], lngParts[1], lngParts[2], lngParts[3]);
+
+                L.marker([lat, lng], { icon: customIcon }).addTo(map);
+            });
+
+            // Geosearch options
+            var options = {
+                key: 'YOUR-GEOSEARCH-KEY',
+                position: 'topright',
+            };
+
+            // Add geosearch to the map
+            var geosearchControl = L.Control.openCageGeosearch(options).addTo(map);
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des données :", error);
+        });
 }
 
 document.querySelector("button").addEventListener("click", e => {
-    Mapping()
+    el = document.getElementById("map")
+    el.style.width = "750px";   
+    el.style.height = "500px";
+    Mapping();
 })
 
 
