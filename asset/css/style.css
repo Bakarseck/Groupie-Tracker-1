@@ -214,3 +214,11 @@ justify-content: center  ;
 .location {
     padding: 0 12px;
 }
+
+footer{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
