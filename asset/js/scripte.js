@@ -17,6 +17,53 @@ $(document).ready(function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtenez l'élément audio
+    var monAudio = document.getElementById("monAudio");
+
+    // Obtenez les boutons
+    var btnPlay = document.getElementById("btnPlay");
+    var btnStop = document.getElementById("btnStop");
+    var btnNext = document.getElementById("btnNext");
+
+    // Liste des fichiers audio
+    var listeFichiersAudio = [
+        "asset/audio/ash.mp3",
+        "asset/audio/david.mp3",
+        "asset/audio/Dido.mp3",
+        "asset/audio/Zokush .mp3",
+    ];
+
+    // Index de la piste audio actuelle
+    var indexPisteActuelle = 0;
+
+    // Ajoutez un gestionnaire d'événements pour le clic sur le bouton Play
+    btnPlay.addEventListener("click", function() {
+        monAudio.src = listeFichiersAudio[indexPisteActuelle];
+        monAudio.play();
+        document.getElementById("image").style.animation= "rotate 2s linear infinite";
+    });
+
+    // Ajoutez un gestionnaire d'événements pour le clic sur le bouton Stop
+    btnStop.addEventListener("click", function() {
+        monAudio.pause();
+        monAudio.currentTime = 0;
+        document.getElementById("image").style.animation= "";
+    });
+
+    // Ajoutez un gestionnaire d'événements pour le clic sur le bouton Next
+    btnNext.addEventListener("click", function() {
+        // Incrémentez l'index de la piste actuelle
+        indexPisteActuelle = (indexPisteActuelle + 1) % listeFichiersAudio.length;
+
+        // Changez la source audio et démarrez la lecture
+        monAudio.src = listeFichiersAudio[indexPisteActuelle];
+        monAudio.play();
+        document.getElementById("image").style.animation= "rotate 2s linear infinite";
+    });
+});
+
+
 
 
 // Appeler la fonction d'initialisation de la carte lorsque la page est chargée
@@ -82,7 +129,7 @@ function Mapping() {
         });
 }
 
-document.querySelector("button").addEventListener("click", e => {
+document.getElementById("map").addEventListener("click", e => {
     el = document.getElementById("map")
     el.style.width = "750px";   
     el.style.height = "500px";

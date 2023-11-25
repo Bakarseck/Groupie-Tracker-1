@@ -1,6 +1,9 @@
 {{ template "base" .}}
 
 {{ define "content" }}
+<button id="btnPlay">Play</button>
+<button id="btnStop">Stop</button>
+<button id="btnNext">Next</button>
 <div id="container">
     <div class="search">
         <form id="search-form" action="/search" method="POST">
@@ -42,6 +45,7 @@
             <button type="submit" id="search-button">Rechercher</button>
         </form>
     </div>
+   <div class="Links">
     {{range .Artist.Artist}}
     <a href="/info?id={{.ID}}">
         <div class="link">
@@ -50,5 +54,6 @@
         </div>
     </a>
     {{end}}
+   </div>
 </div>
 {{ end }}

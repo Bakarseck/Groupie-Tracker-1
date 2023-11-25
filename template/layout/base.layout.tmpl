@@ -11,14 +11,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@opencage/leaflet-opencage-geosearch/leaflet-opencage-geosearch.css" />
     <link rel="icon" href="/asset/img/favicon.ico">
     <title>Groupie-Tracker</title>
+    <audio id="monAudio" src="/asset/audio/Dido.mp3" preload="auto"></audio>
 </head>
-<body>
+<body >
     <header>
         <h1>Groupie-Tracker</h1>
         <img src="/asset/img/disk.png" id="image" height="400px" width="400px" alt="">
         <div class="head">
             <a href="/"><i class="bi bi-house-fill"></i> Go back</a>
         </div>
+      
     </header>
     {{ block "content" .}}
     {{ end }}

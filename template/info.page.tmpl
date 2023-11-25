@@ -1,54 +1,52 @@
 {{ template "base" .}}
 
 {{ define "content" }}
-<button><i class="bi bi-geo-alt"></i> Maps</button>
-<dive class="boite">
-    <div class="container">
-        <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
-        <h1>{{.Artist.Name}}</h1>
-        <p>Créé en {{.Artist.CreationDate}}. Leur 1er album fut publié le {{.Artist.FirstAlbum}}</p>
-    </div>
-    
-    <div class="members">
-        <h3>Members</h3>
-        {{ range .Artist.Members }}
-        <span>{{ . }}</span>
-        {{ end }}
-    </div>
-    
-   <div class="containere centered-container">
-        <div class="concertdates">
-            <h3>Concert dates</h3>
-            {{ range .Date.Dates }}
-                <span>{{ . }}</span><br>
+<button id="map"><i class="bi bi-geo-alt"></i> Maps</button>
+<div class="princ">
+    <div class="boite">
+        <div class="container">
+            <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
+            <h1>{{.Artist.Name}}</h1>
+            <p>Créé en {{.Artist.CreationDate}}. Leur 1er album fut publié le {{.Artist.FirstAlbum}}</p>
+        </div>
+        
+        <div class="members">
+            <h3>Members</h3>
+            {{ range .Artist.Members }}
+            <span>{{ . }}</span>
             {{ end }}
         </div>
         
-        <div class="location">
-            <h3>Location</h3>
-            {{ range .Location.Location }}
-                <span>{{ . }}</span><br>
-            {{ end }}
-        </div>
-   </div>
-    
-   <div class="relation">
-    <h3>Relation</h3>
-    <select>
-        {{ range $location, $dates := .Relation.Relations }}
-            <optgroup label="{{ $location }}">
-                {{ range $dates }}
-                    <option>{{ . }}</option>
+       <div class="containere centered-container">
+            <div class="concertdates">
+                <h3>Concert dates</h3>
+                {{ range .Date.Dates }}
+                    <span>{{ . }}</span><br>
                 {{ end }}
-            </optgroup>
-        {{ end }}
-    </select>
-
-    <div id="map">
-   
+            </div>
+            
+            <div class="location">
+                <h3>Location</h3>
+                {{ range .Location.Location }}
+                    <span>{{ . }}</span><br>
+                {{ end }}
+            </div>
+        </div>
+        
+        <div class="relation">
+            <h3>Relation</h3>
+            <select>
+                {{ range $location, $dates := .Relation.Relations }}
+                    <optgroup label="{{ $location }}">
+                        {{ range $dates }}
+                            <option>{{ . }}</option>
+                        {{ end }}
+                    </optgroup>
+                {{ end }}
+            </select>
+        </div>
     </div>
-</div>
-
+    <div id="map"></div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/@opencage/geosearch-bundle"></script>
