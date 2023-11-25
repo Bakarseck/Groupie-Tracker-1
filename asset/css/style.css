@@ -67,6 +67,8 @@ body, html {
 #map {
     height:fit-content;
     width:fit-content;
+    border-style: outset;
+    box-shadow:5px5px 2.5px lightblue;
 }
 
 header {
@@ -153,7 +155,7 @@ justify-content: center  ;
 /* Style pour l'image elle-même */
 .image {
     display: block;
-    border-radius: 8px;
+    border-radius: 50%;
     /* Coins arrondis */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Ombre légère */
@@ -201,6 +203,10 @@ justify-content: center  ;
     flex-direction: wrap;
 }
 
+.container img{
+    border-radius: 50%;
+    box-shadow: 8px 8px 5px rgba(0,0,0,0.2);
+}
 .concertdates {
     padding: 0 12px;
 }
