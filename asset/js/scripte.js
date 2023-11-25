@@ -129,7 +129,7 @@ function Mapping() {
         });
 }
 
-document.getElementById("map").addEventListener("click", e => {
+document.querySelector("button").addEventListener("click", e => {
     el = document.getElementById("map")
     el.style.width = "750px";   
     el.style.height = "500px";

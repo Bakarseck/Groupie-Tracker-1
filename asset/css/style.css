@@ -98,10 +98,10 @@ header h1 {
     font-style: normal;
 }
 .princ{
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: nowrap;;
 }
 h1 {
     font-family: 'Saturday', sans-serif;
