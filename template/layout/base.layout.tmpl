@@ -1,6 +1,7 @@
 {{ define "base" }}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,23 +14,31 @@
     <title>Groupie-Tracker</title>
     <audio id="monAudio" src="/asset/audio/Dido.mp3" preload="auto"></audio>
 </head>
-<body >
-    <header>
-        <h1>Groupie-Tracker</h1>
-        <img src="/asset/img/disk.png" id="image" height="400px" width="400px" alt="">
-        <div class="head">
-            <a href="/"><i class="bi bi-house-fill"></i> Go back</a>
-        </div>
-      
-    </header>
-    {{ block "content" .}}
-    {{ end }}
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="/asset/js/scripte.js"></script>
 
-    <footer>
-        &copy;<span>Zil Khiff Khaliss 221</span>
-    </footer>
+<body>
+    <div class="Loaded">
+        <div class="preloader">
+
+        </div>
+    </div>
+    <div class="container0">
+        <header>
+            <h1>Groupie-Tracker</h1>
+            <img src="/asset/img/disk.png" id="image" height="400px" width="400px" alt="">
+            <div class="head">
+                <a href="/"><i class="bi bi-house-fill"></i> Go back</a>
+            </div>
+
+        </header>
+        {{ block "content" .}} {{ end }}
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="/asset/js/scripte.js"></script>
+
+        <footer>
+            &copy;<span>Zil Khiff Khaliss 221</span>
+        </footer>
+    </div>
 </body>
+
 </html>
 {{ end }}

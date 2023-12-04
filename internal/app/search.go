@@ -24,12 +24,8 @@ func Search(id int, artists PageData, restant LOcDatRel) {
 
 func Trie(Artist map[int]string) Listeinfo {
 	mape := Listeinfo{}
-	for id, _ := range Artist {
-		for _, artist := range AllArtists {
-			if artist.ID == id {
-				mape.Artists = append(mape.Artists, artist)
-			}
-		}
+	for id := range Artist {
+		mape.Artists = append(mape.Artists, AllArtists[id-1])
 	}
 	return mape
 }

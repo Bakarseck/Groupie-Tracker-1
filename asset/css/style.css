@@ -4,10 +4,11 @@
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
-    min-width: 1280px;
+    min-width: 100%;
 }
 
 @font-face {
@@ -18,20 +19,55 @@ body, html {
     font-style: normal;
 }
 
-
-
 @keyframes rotate {
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
 }
 
+.Loaded {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader {
+    width: 100px;
+    height: 7px;
+    background: rgb(90, 212, 242);
+    background: -moz-radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    background: -webkit-radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    background: radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#5ad4f2", endColorstr="#fffbfb", GradientType=1);
+    position: relative;
+}
+
+.preloader::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    animation: fill 3.2s linear infinite;
+}
+
+@keyframes fill {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
 
 /* Ajoutez du style à la flèche ici si nécessaire */
+
 .arrow {
     position: fixed;
     bottom: 20px;
@@ -42,55 +78,61 @@ body, html {
     transition: opacity 0.3s ease-in-out;
 }
 
-.search-container{
+.search-container {
     display: flex;
     flex-wrap: wrap;
 }
 
+
 /* Ajoutez du style pour l'animation de la flèche ici si nécessaire */
+
 .arrow.active {
     animation: floatUpDown 2s ease-in-out infinite;
 }
 
 @keyframes floatUpDown {
-
     0%,
     100% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-10px);
     }
 }
 
 #map {
-    height:fit-content;
-    width:fit-content;
+    height: fit-content;
+    width: fit-content;
     border-style: outset;
-    box-shadow:5px5px 2.5px lightblue;
+    box-shadow: 5px5px 2.5px lightblue;
 }
 
 header {
+    background: rgb(90, 212, 242);
+    background: -moz-radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    background: -webkit-radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    background: radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#5ad4f2", endColorstr="#fffbfb", GradientType=1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     text-align: center;
+    box-shadow: ;
 }
 
-.head{
+.head {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
 }
 
-.head a{
+.head a {
     text-decoration: none;
     color: white;
-    margin: 0 12px ;
+    margin: 0 12px;
 }
 
 header h1 {
@@ -99,12 +141,14 @@ header h1 {
     font-weight: normal;
     font-style: normal;
 }
-.princ{
+
+.princ {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: nowrap;;
+    flex-wrap: wrap;
 }
+
 h1 {
     font-family: 'Saturday', sans-serif;
     font-size: 20px;
@@ -122,25 +166,29 @@ p {
 #container {
     display: inline-block;
     width: 100% !important;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
+
 /* Style pour le conteneur d'image */
+
 .link {
-    width: 150px;
+    max-width: 150px;
     margin: 0 22px;
     text-align: center;
     border-radius: 17px;
 }
-.Links{
+
+.Links {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-justify-content: center  ;
+    justify-content: center;
 }
 
 
 /* Style pour le lien/image */
+
 .image-container a {
     width: 150px !important;
     text-decoration: none;
@@ -151,8 +199,8 @@ justify-content: center  ;
 }
 
 
-
 /* Style pour l'image elle-même */
+
 .image {
     display: block;
     border-radius: 50%;
@@ -171,7 +219,9 @@ justify-content: center  ;
     transform: scale(1.2);
 }
 
+
 /* Style pour la balise span contenant le nom */
+
 #name {
     display: block;
     /* Assure que le nom apparaît sous l'image */
@@ -180,7 +230,7 @@ justify-content: center  ;
     text-align: center;
     padding: 0;
     font-size: 14px;
-    color: #ffffff;
+    color: black;
     font-weight: bold;
     /* Met en gras le nom */
 }
@@ -190,7 +240,7 @@ justify-content: center  ;
     width: 50% !important;
 }
 
-#Errorbody{
+#Errorbody {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -203,10 +253,11 @@ justify-content: center  ;
     flex-direction: wrap;
 }
 
-.container img{
+.container img {
     border-radius: 50%;
-    box-shadow: 8px 8px 5px rgba(0,0,0,0.2);
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
 }
+
 .concertdates {
     padding: 0 12px;
 }
@@ -215,7 +266,12 @@ justify-content: center  ;
     padding: 0 12px;
 }
 
-footer{
+footer {
+    background: rgb(90, 212, 242);
+    background: -moz-radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    background: -webkit-radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    background: radial-gradient(circle, rgba(90, 212, 242, 1) 28%, rgba(255, 251, 251, 1) 87%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#5ad4f2", endColorstr="#fffbfb", GradientType=1);
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;

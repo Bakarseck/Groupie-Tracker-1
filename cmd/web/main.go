@@ -15,8 +15,8 @@ func main() {
 	http.HandleFunc("/search", bim.SearchHandler)
 	http.HandleFunc("/api", bim.ApiJson)
 	http.HandleFunc("/Error", bim.ErrorHandler)
-	fmt.Printf("127.0.0.1:1112")
-	err := http.ListenAndServe(":1112", nil)
+	fmt.Printf("http://Localhost:8080")
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println("Erreur lors du démarrage du serveur :", err)
 		return
